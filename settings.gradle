@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import org.gradle.caching.http.HttpBuildCache
-
 plugins {
     id "com.gradle.enterprise" version "3.7"
     id 'com.gradle.common-custom-user-data-gradle-plugin' version '1.4.2'
@@ -24,7 +21,7 @@ plugins {
 gradleEnterprise {
     server = "https://ec2-3-229-117-168.compute-1.amazonaws.com/"
     allowUntrustedServer = true
-    buildScan{
+    buildScan {
         publishAlways()
         uploadInBackground = System.getenv("CI") == null
         capture {
@@ -33,21 +30,21 @@ gradleEnterprise {
     }
 }
 
-buildCache{
-    local{ enabled = false }
-    remote(HttpBuildCache){
-        var useRemote = System.getenv("CI") != null && System.getenv("CI_CACHE_PASSWORD") != null
-        if(useRemote) {
-            enabled = true
+buildCache {
+    local { enabled = false }
+    remote(HttpBuildCache) {
+        var ciPush = System.getenv("CI") != null && System.getenv("CI_CACHE_PASSWORD") != null
+        enabled = true
+        allowUntrustedServer = true
+        url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
+        if (ciPush) {
             push = true
-            allowUntrustedServer = true
-            url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
             credentials {
                 username = 'ci'
                 password = System.getenv("CI_CACHE_PASSWORD")
             }
         } else {
-            enabled = false
+            push = false
         }
     }
 }
