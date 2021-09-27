@@ -32,8 +32,21 @@ gradleEnterprise {
 }
 
 buildCache{
-    local{ enabled = true }
-    remote(HttpBuildCache){ enabled = false }
+    local{ enabled = false }
+    remote(HttpBuildCache){
+        var useRemote = System.getenv("CI") != null && System.getenv("CI_CACHE_PASSWORD") != null
+        if(useRemote) {
+            enabled = true
+            push = true
+            url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
+            credentials {
+                username = 'ci'
+                password = System.getenv("CI_CACHE_PASSWORD")
+            }
+        } else {
+            enabled = false
+        }
+    }
 }
 
 rootProject.name = "servicetalk"

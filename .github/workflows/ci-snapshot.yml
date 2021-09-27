@@ -32,6 +32,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
           SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
           SONATYPE_TOKEN: ${{ secrets.SONATYPE_TOKEN }}
+          CI_CACHE_PASSWORD: ${{ secrets.CI_CACHE_PASSWORD }}
           CI: true
         run: |
           # Build arguments to feed to the single gradlew publish command

@@ -24,6 +24,7 @@ jobs:
       - name: Build with Gradle
         env:
           CI: true
+          CI_CACHE_PASSWORD: ${{ secrets.CI_CACHE_PASSWORD }}
         run: ./gradlew --parallel clean quality
       - name: Upload CheckStyle Results
         if: always()

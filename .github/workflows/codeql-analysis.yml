@@ -24,6 +24,9 @@ jobs:
         with:
           languages: ${{ matrix.language }}
       - name: Execute gradle build
+        env:
+          CI_CACHE_PASSWORD: ${{ secrets.CI_CACHE_PASSWORD }}
+          CI: true
         run: ./gradlew --parallel clean assemble
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
