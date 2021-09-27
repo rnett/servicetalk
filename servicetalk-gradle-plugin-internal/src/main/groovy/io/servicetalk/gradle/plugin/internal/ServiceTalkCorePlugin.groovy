@@ -19,6 +19,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.XmlProvider
 import org.gradle.api.plugins.quality.Checkstyle
+import org.gradle.api.tasks.testing.Test
 
 import static io.servicetalk.gradle.plugin.internal.ProjectUtils.addBuildContextExtensions
 import static io.servicetalk.gradle.plugin.internal.ProjectUtils.appendNodes
@@ -40,6 +41,13 @@ class ServiceTalkCorePlugin implements Plugin<Project> {
 
     if (publishesArtifacts) {
       applyMavenPublishPlugin project // Sign & Publish to Maven Central
+    }
+
+    project.configure(project){
+      tasks.withType(Test){
+        // this will be limited by org.gradle.workers.max, which will be set anyways if limiting processes is important
+        maxParallelForks = 64
+      }
     }
   }
 
