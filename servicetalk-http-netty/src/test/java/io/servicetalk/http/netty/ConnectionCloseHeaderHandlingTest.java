@@ -285,8 +285,8 @@ final class ConnectionCloseHeaderHandlingTest {
 
         private final CountDownLatch responsePayloadReceived = new CountDownLatch(1);
 
-        @ParameterizedTest(name = "{index}: useUds={0}, viaProxy={1}, awaitRequestPayload={2}, " +
-                                  "requestInitiatesClosure={3}, noRequestContent={4}, noResponseContent={5}")
+//        @ParameterizedTest(name = "{index}: useUds={0}, viaProxy={1}, awaitRequestPayload={2}, " +
+//                                  "requestInitiatesClosure={3}, noRequestContent={4}, noResponseContent={5}")
         @MethodSource("io.servicetalk.http.netty.ConnectionCloseHeaderHandlingTest#nonPipelinedRequestsTestData")
         void testConnectionClosure(boolean useUds, boolean viaProxy, boolean awaitRequestPayload,
                                    boolean requestInitiatesClosure,
