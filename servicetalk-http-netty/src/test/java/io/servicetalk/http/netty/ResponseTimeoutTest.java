@@ -147,7 +147,7 @@ class ResponseTimeoutTest {
         newCompositeCloseable().appendAll(ctx, client).closeAsync().toFuture().get();
     }
 
-    @ParameterizedTest(name = "{index}: client = {0} server = {1}")
+//    @ParameterizedTest(name = "{index}: client = {0} server = {1}")
     @MethodSource("data")
     void timeout(Duration clientTimeout,
                  Duration serverTimeout,
