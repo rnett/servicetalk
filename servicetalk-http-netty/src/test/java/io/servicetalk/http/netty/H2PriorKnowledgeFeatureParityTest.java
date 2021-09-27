@@ -1140,7 +1140,7 @@ class H2PriorKnowledgeFeatureParityTest {
         }
     }
 
-    @ParameterizedTest(name = "{displayName} [{index}] client={0}, h2PriorKnowledge={1}")
+//    @ParameterizedTest(name = "{displayName} [{index}] client={0}, h2PriorKnowledge={1}")
     @MethodSource("clientExecutors")
     void serverGracefulClose(HttpTestExecutionStrategy strategy, boolean h2PriorKnowledge) throws Exception {
         setUp(strategy, h2PriorKnowledge);

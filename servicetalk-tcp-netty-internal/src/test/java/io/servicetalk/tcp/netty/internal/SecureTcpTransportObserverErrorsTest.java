@@ -151,7 +151,7 @@ final class SecureTcpTransportObserverErrorsTest extends AbstractTransportObserv
         return serverConfig;
     }
 
-    @ParameterizedTest(name = "errorReason={0}, clientProvider={1}, serverProvider={2}")
+//    @ParameterizedTest(name = "errorReason={0}, clientProvider={1}, serverProvider={2}")
     @MethodSource("data")
     void testSslErrors(ErrorReason errorReason,
                        SslProvider clientProvider,
