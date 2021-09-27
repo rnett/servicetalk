@@ -40,8 +40,9 @@ buildCache{
         if(useRemote) {
             enabled = true
             push = true
-            it.url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
-            it.credentials {
+            allowUntrustedServer = true
+            url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
+            credentials {
                 username = 'ci'
                 password = System.getenv("CI_CACHE_PASSWORD")
             }
