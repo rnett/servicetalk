@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import org.gradle.caching.http.HttpBuildCache
+
 plugins {
     id "com.gradle.enterprise" version "3.7"
     id 'com.gradle.common-custom-user-data-gradle-plugin' version '1.4.2'
@@ -38,8 +40,8 @@ buildCache{
         if(useRemote) {
             enabled = true
             push = true
-            url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
-            credentials {
+            it.url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
+            it.credentials {
                 username = 'ci'
                 password = System.getenv("CI_CACHE_PASSWORD")
             }
