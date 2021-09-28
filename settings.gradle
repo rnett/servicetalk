@@ -13,6 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+plugins {
+    id "com.gradle.enterprise" version "3.7"
+    id 'com.gradle.common-custom-user-data-gradle-plugin' version '1.4.2'
+}
+
+gradleEnterprise {
+    server = "https://ec2-3-229-117-168.compute-1.amazonaws.com/"
+    allowUntrustedServer = true
+    buildScan {
+        publishAlways()
+        uploadInBackground = System.getenv("CI") == null
+        capture {
+            taskInputFiles = true
+        }
+    }
+}
+
+buildCache {
+    local { enabled = false }
+
+    remote(HttpBuildCache) {
+        enabled = true
+        allowUntrustedServer = true
+        url = "https://ec2-3-229-117-168.compute-1.amazonaws.com/cache/"
+
+        if (System.getenv("CI") != null && System.getenv("CI_CACHE_PASSWORD") != null) {
+            push = true
+            credentials {
+                username = 'ci'
+                password = System.getenv("CI_CACHE_PASSWORD")
+            }
+        } else {
+            push = false
+        }
+    }
+}
 
 rootProject.name = "servicetalk"
 

@@ -45,7 +45,7 @@ class RoleProtectedBasicAuthSecurityContextFilterTest extends AbstractBasicAuthS
                                 .build());
     }
 
-    @ParameterizedTest
+//    @ParameterizedTest
     @ValueSource(booleans = {true, false})
     void authorized(final boolean withUserInfo) throws Exception {
         setUp(withUserInfo);

@@ -174,7 +174,7 @@ class DefaultHttpExecutionStrategyTest {
         analyzer.verify();
     }
 
-    @ParameterizedTest
+//    @ParameterizedTest
     @EnumSource(Params.class)
     void offloadSendSingle(final Params params) throws Exception {
         setUp(params);

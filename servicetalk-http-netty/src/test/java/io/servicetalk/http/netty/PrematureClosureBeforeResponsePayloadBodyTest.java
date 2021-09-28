@@ -287,7 +287,7 @@ class PrematureClosureBeforeResponsePayloadBodyTest {
         connectionClosedLatch.await();
     }
 
-    @Test
+//    @Test
     void chunkedWithoutLastChunk() throws Exception {
         encodedResponse.set("HTTP/1.1 200 OK\r\n" +
                             "Content-Type: text/plain\r\n" +

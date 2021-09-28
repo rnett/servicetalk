@@ -35,6 +35,7 @@ jobs:
         env:
           CI: true
           JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+          CI_CACHE_PASSWORD: ${{ secrets.CI_CACHE_PASSWORD }}
         run: ./gradlew --parallel clean test
       - name: Upload Test Results
         if: always()

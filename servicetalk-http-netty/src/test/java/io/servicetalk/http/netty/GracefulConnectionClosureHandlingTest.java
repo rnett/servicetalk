@@ -276,7 +276,7 @@ class GracefulConnectionClosureHandlingTest {
         }
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeIdleBeforeExchange(HttpProtocol protocol, boolean initiateClosureFromClient,
                                  boolean useUds, boolean viaProxy) throws Exception {
@@ -285,7 +285,7 @@ class GracefulConnectionClosureHandlingTest {
         awaitConnectionClosed();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeIdleAfterExchange(HttpProtocol protocol, boolean initiateClosureFromClient,
                                 boolean useUds, boolean viaProxy) throws Exception {
@@ -301,7 +301,7 @@ class GracefulConnectionClosureHandlingTest {
         awaitConnectionClosed();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeAfterRequestMetaDataSentNoResponseReceived(HttpProtocol protocol,
                                                          boolean initiateClosureFromClient,
@@ -329,7 +329,7 @@ class GracefulConnectionClosureHandlingTest {
         assertNextRequestFails();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeAfterFullRequestSentNoResponseReceived(HttpProtocol protocol, boolean initiateClosureFromClient,
                                                      boolean useUds, boolean viaProxy) throws Exception {
@@ -353,7 +353,7 @@ class GracefulConnectionClosureHandlingTest {
         assertNextRequestFails();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeAfterRequestMetaDataSentResponseMetaDataReceived(HttpProtocol protocol,
                                                                boolean initiateClosureFromClient,
@@ -380,7 +380,7 @@ class GracefulConnectionClosureHandlingTest {
         assertNextRequestFails();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeAfterFullRequestSentResponseMetaDataReceived(HttpProtocol protocol,
                                                            boolean initiateClosureFromClient,
@@ -405,7 +405,7 @@ class GracefulConnectionClosureHandlingTest {
         assertNextRequestFails();
     }
 
-    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
+//    @ParameterizedTest(name = "{index}: protocol={0} initiateClosureFromClient={1} useUds={2} viaProxy={3}")
     @MethodSource("data")
     void closeAfterRequestMetaDataSentFullResponseReceived(HttpProtocol protocol,
                                                            boolean initiateClosureFromClient,
